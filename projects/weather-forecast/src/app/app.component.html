@@ -1,0 +1,86 @@
+<main>
+  <!-- <input type="text"/> -->
+  <div><br><br>
+    <input type="text" [(ngModel)]="city" (keyup.enter)="searchCityWeather($event)" placeholder="Enter the city name!" class="input-container" />
+    &nbsp;&nbsp;&nbsp;<button class="search-button" [disabled]="city.length===0" (click)="searchCityWeather($event)">Go!</button>
+    <div class="input-placeholder">Press enter/Click go to check weather...</div><br>
+  </div>
+  <!-- <div>
+    <div>City Name</div>
+    <div>Today - Time, Day (using browser), wind.deg, iterate first element of weather (with main, description)
+    (see syntax for if/else/other)
+      <img />sunny based on main.temp)
+      <img />night
+    </div>
+    <div>main (temp (min-max), pressure, humidity), wind.speed (with icons)</div>
+  </div> -->
+  <!-- <div class="card" [ngStyle]="{'background-image': true ? 'url(https://wallpaperaccess.com/full/1323254.jpg)': 'url(https://wallpaperaccess.com/full/21203.jpg)' }"> -->
+    <!--  [ngStyle]="{'background-image': true ? 'url(https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg)' : ''}" -->
+    <!-- <img class="image" *ngIf="true; else elseCase" src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg" alt="sunny place" />
+        <ng-template #elseCase><img src="" alt="cool place" class="image" /></ng-template> -->
+    <!-- <h1 class="city-name">Hyderabad</h1>
+    <hr>
+    <div class="details"> -->
+        <!-- <img class="image" *ngIf="true; else elseCase" src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg" alt="sunny place" />
+        <ng-template #elseCase><img src="" alt="cool place" class="image" /></ng-template> -->
+      <!-- <div><div class="day">Tuesday</div><div class="weather-info">10C Foggy</div></div>
+      <div><div class="time">10:00 AM</div><div class="weather-info">Slight Rain</div></div>
+    </div>
+    <hr>
+    <div> -->
+      <!-- more info button? on click redirect to a child component? or like tooltip? -->
+      <!-- main info -->
+      <!-- <button>More Info</button>
+    </div>
+  </div>{{weatherInfo}} -->
+  <div *ngIf="weatherInfo && weatherInfo.main">
+    <div class="card" [ngStyle]="{'background-image': weatherInfo.main.temp < 30 ? 'url(https://wallpaperaccess.com/full/1323254.jpg)': 'url(https://wallpaperaccess.com/full/21203.jpg)' }">
+      <h1 class="city-name">{{weatherInfo.name}}</h1>
+      <h2 class="date">{{today | date: 'fullDate'}}</h2>
+      <h2 class="time">{{today | date: 'shortTime'}}</h2>
+      <hr>
+      <h3 class="details" [ngClass]="weatherInfo.main.temp < 30 ? 'setColor' : ''">
+        <!-- <div><div class="weather-info">{{weatherInfo.weather[0].main}}</div></div> -->
+        <!-- <h4 class="wind-info">Wind Details
+          <div>Speed - {{weatherInfo.wind.speed}}</div>
+          <div>Degrees - {{weatherInfo.wind.deg}}</div>
+        </h4> -->
+        <div class="wind-speed">Wind Speed - {{weatherInfo.wind.speed}}m/s</div>
+        <div class="weather-description">{{weatherInfo.weather[0].main}} ({{weatherInfo.weather[0].description}})</div>
+        <div class="temp-min-max">{{weatherInfo.main.temp}}° ({{weatherInfo.main.temp_min}}° ~ {{weatherInfo.main.temp_max}}°)</div>
+        <div class="pressure">Pressure - {{weatherInfo.main.pressure}}P</div>
+        <div class="humidity">Humidity - {{weatherInfo.main.humidity}}%</div>
+      </h3>
+      <hr>
+      <div class="more-info-button" (click)="showPopover()">
+        <b>More Info</b>
+        <!-- <button class="more-info">More Info</button> -->
+      </div>
+      <!-- <ng-template> -->
+        <div *ngIf="showAdditionalContent" class="additional-info-container" [ngClass]="showAdditionalContent ? 'active' : ''">
+        <i class="fa fa-arrow-down"></i>
+        <div class="additional-info">
+          <div>Country/Population - {{weeklyWeatherInfo.city.country}}/{{weeklyWeatherInfo.city.population}}</div>
+          <div>Coordinates - {{weeklyWeatherInfo.city.coord.lat}}λ | {{weeklyWeatherInfo.city.coord.lon}}φ</div>
+          <div class="weekly-weather-forecast">
+            <div class="day-forecast" *ngFor="let day of weeklyWeatherInfo.list">
+                <div class="wind-speed"><!-- Wind Speed -  -->{{day.speed}}m/s</div>
+                <div class="weather-description">{{day.weather[0].main}} ({{day.weather[0].description}})</div>
+                <div class="temp-min-max">{{day.temp.min}}° ~ {{day.temp.max}}°</div>
+                <div class="temp-min-max">{{day.temp.min | tempConverter:'F'}}F ~ {{day.temp.min | tempConverter:'F'}}F</div>
+                <div class="pressure"><!-- Pressure -  -->{{day.pressure}}P</div>
+                <div class="humidity"><!-- Humidity -  -->{{day.humidity}}%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </ng-template> -->
+    </div>
+    <!-- <div *ngIf="!weatherInfo.main">
+      No such country/city exists!
+    </div> -->
+  </div>
+  <div *ngIf="!weatherInfo">
+    No such country/city exists!
+  </div>
+</main>

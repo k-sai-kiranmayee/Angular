@@ -3,5 +3,418 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "tic-tac-toe": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/tic-tac-toe",
+      "sourceRoot": "projects/tic-tac-toe/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/tic-tac-toe",
+            "index": "projects/tic-tac-toe/src/index.html",
+            "main": "projects/tic-tac-toe/src/main.ts",
+            "polyfills": "projects/tic-tac-toe/src/polyfills.ts",
+            "tsConfig": "projects/tic-tac-toe/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/tic-tac-toe/src/favicon.ico",
+              "projects/tic-tac-toe/src/assets"
+            ],
+            "styles": [
+              "projects/tic-tac-toe/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/tic-tac-toe/src/environments/environment.ts",
+                  "with": "projects/tic-tac-toe/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "tic-tac-toe:build:production"
+            },
+            "development": {
+              "browserTarget": "tic-tac-toe:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tic-tac-toe:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tic-tac-toe/src/test.ts",
+            "polyfills": "projects/tic-tac-toe/src/polyfills.ts",
+            "tsConfig": "projects/tic-tac-toe/tsconfig.spec.json",
+            "karmaConfig": "projects/tic-tac-toe/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/tic-tac-toe/src/favicon.ico",
+              "projects/tic-tac-toe/src/assets"
+            ],
+            "styles": [
+              "projects/tic-tac-toe/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "learnings": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/learnings",
+      "sourceRoot": "projects/learnings/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/learnings",
+            "index": "projects/learnings/src/index.html",
+            "main": "projects/learnings/src/main.ts",
+            "polyfills": "projects/learnings/src/polyfills.ts",
+            "tsConfig": "projects/learnings/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/learnings/src/favicon.ico",
+              "projects/learnings/src/assets"
+            ],
+            "styles": [
+              "projects/learnings/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/learnings/src/environments/environment.ts",
+                  "with": "projects/learnings/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "learnings:build:production"
+            },
+            "development": {
+              "browserTarget": "learnings:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "learnings:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/learnings/src/test.ts",
+            "polyfills": "projects/learnings/src/polyfills.ts",
+            "tsConfig": "projects/learnings/tsconfig.spec.json",
+            "karmaConfig": "projects/learnings/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/learnings/src/favicon.ico",
+              "projects/learnings/src/assets"
+            ],
+            "styles": [
+              "projects/learnings/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "draggable-notes": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/draggable-notes",
+      "sourceRoot": "projects/draggable-notes/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/draggable-notes",
+            "index": "projects/draggable-notes/src/index.html",
+            "main": "projects/draggable-notes/src/main.ts",
+            "polyfills": "projects/draggable-notes/src/polyfills.ts",
+            "tsConfig": "projects/draggable-notes/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/draggable-notes/src/favicon.ico",
+              "projects/draggable-notes/src/assets"
+            ],
+            "styles": [
+              "projects/draggable-notes/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/draggable-notes/src/environments/environment.ts",
+                  "with": "projects/draggable-notes/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "draggable-notes:build:production"
+            },
+            "development": {
+              "browserTarget": "draggable-notes:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "draggable-notes:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/draggable-notes/src/test.ts",
+            "polyfills": "projects/draggable-notes/src/polyfills.ts",
+            "tsConfig": "projects/draggable-notes/tsconfig.spec.json",
+            "karmaConfig": "projects/draggable-notes/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/draggable-notes/src/favicon.ico",
+              "projects/draggable-notes/src/assets"
+            ],
+            "styles": [
+              "projects/draggable-notes/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "weather-forecast": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/weather-forecast",
+      "sourceRoot": "projects/weather-forecast/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/weather-forecast",
+            "index": "projects/weather-forecast/src/index.html",
+            "main": "projects/weather-forecast/src/main.ts",
+            "polyfills": "projects/weather-forecast/src/polyfills.ts",
+            "tsConfig": "projects/weather-forecast/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/weather-forecast/src/favicon.ico",
+              "projects/weather-forecast/src/assets"
+            ],
+            "styles": [
+              "projects/weather-forecast/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/weather-forecast/src/environments/environment.ts",
+                  "with": "projects/weather-forecast/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "weather-forecast:build:production"
+            },
+            "development": {
+              "browserTarget": "weather-forecast:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "weather-forecast:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/weather-forecast/src/test.ts",
+            "polyfills": "projects/weather-forecast/src/polyfills.ts",
+            "tsConfig": "projects/weather-forecast/tsconfig.spec.json",
+            "karmaConfig": "projects/weather-forecast/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/weather-forecast/src/favicon.ico",
+              "projects/weather-forecast/src/assets"
+            ],
+            "styles": [
+              "projects/weather-forecast/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "tic-tac-toe"
 }

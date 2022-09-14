@@ -1,0 +1,30 @@
+<body>
+<header><h1><span [style.color]="'rgb(8 245 59 / 82%)'">Tic</span>-Tac-<span [style.color]="'#2196F3'">Toe</span></h1></header>
+<main>
+  <h4 [style.color]="'rgb(8 245 59 / 82%)'">Player 1 - X || Wins : {{winsForX}}</h4>
+  <h4 [style.color]="'#2196F3'">Player 2 - O || Wins : {{winsForO}}</h4>
+  <div class="grid-container">
+    <button class="grid-item" *ngFor="let i of [0,1,2,3,4,5,6,7,8]"
+    (click)="toggleUser($event, i)" [ngStyle]="{'background-color':gridValues[i] === 'X' ? 'rgb(8 245 59 / 82%)' : gridValues[i] === 'O' ? '#2196F3' : ''}"
+    [ngClass]="currentUser === 'X' ? 'green' : 'blue'" [disabled]="gridValues[i] !== '-' || winner.length">
+    {{gridValues[i]}}</button>
+  </div>
+  <!-- <div>Win message</div> -->
+  <br><h3 *ngIf="winner" [class]="winner !== 'draw' && winner !== '' ? 'show-confetti': ''" [ngStyle]="{'color': winner === 'X' ? 'rgb(8 245 59 / 82%)' : '#2196F3'}">{{this.winner}} is the winner!</h3><br>
+  <button class="reset reset-game" (click)="resetGame()" [disabled]="!winner">Reset</button>&nbsp;&nbsp;
+  <button class="reset reset-stats" (click)="resetStats()" [disabled]="!winner">Clear Stats</button>
+</main>
+<footer></footer>
+</body>
+
+<!-- 
+  <button class="grid-item 1" *ngIf="true" (click)="toggleUser($event)">{{currentUser}}</button>
+    <button class="grid-item 2" (click)="toggleUser($event)"></button>
+    <button class="grid-item 3" (click)="toggleUser($event)"></button>
+    <button class="grid-item 4" (click)="toggleUser($event)"></button>
+    <button class="grid-item 5" (click)="toggleUser($event)"></button>
+    <button class="grid-item 6" (click)="toggleUser($event)"></button>
+    <button class="grid-item 7" (click)="toggleUser($event)"></button>
+    <button class="grid-item 8" (click)="toggleUser($event)"></button>
+    <button class="grid-item 9" (click)="toggleUser($event)"></button>
+ -->

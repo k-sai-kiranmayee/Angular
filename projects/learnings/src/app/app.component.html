@@ -1,0 +1,48 @@
+<!-- <div>By default app component which is the base component is rendered. Add child components like below</div> -->
+<!-- Create a left menu bar, which is responsive, on click routes to a child component
+  should display like home icon/childComponent
+  components - https://www.tektutorialshub.com/angular/angular-component/, component-communication, component life cycle hook, advanced components
+  directives
+  Services
+  Forms & validation
+  Routes
+  modules
+  others
+-->
+<div class="page-container">
+<div class="side-menu">
+    <div class="side-bar-header">
+      <!-- <a routerLink="/">Home</a> (click)="toggleMenu()" -->
+      <!-- <a routerLink="/">Home</a> -->
+      <!-- <button class="toggle-side-bar"><i class="fa fa-times"></i></button> -->
+      <a *ngIf="closeMenu" routerLink="/"><i class="fa fa-home"></i></a>
+      <!-- <i *ngIf="closeMenu; else elseBlock" routerLink="/"><i class="fa fa-home"></i></a> -->
+      <!-- <ng-template #elseBlock><a><i [className]="'fa fa-bars'"></i></a></ng-template> -->
+      
+      <a (click)="toggleMenu()" class="toggle-side-bar">
+        <i [ngClass]="closeMenu ? 'fa fa-times' : 'fa fa-bars'"></i>
+        <!-- <i class="fa fa-times"></i> -->
+      </a>
+    </div>
+    <ul *ngIf="closeMenu">
+      <li><a routerLink="/components-info">components-info</a></li>
+      <li><a routerLink="/directives">directives</a></li>
+      <li><a routerLink="/pipes">pipes</a></li>
+      <li><a routerLink="/life-cycle-communication">life cycle & communication</a></li>
+      <li><a routerLink="/router-info">router-info</a></li>
+      <li><a routerLink="/modules">modules</a></li>
+      <li><a routerLink="/forms">forms</a></li>
+      <li><a routerLink="/services">services</a></li>
+      <li><a routerLink="/http-info">http-info</a></li>
+    </ul>
+</div>
+<div class="main">
+  <!-- <a *ngIf="!closeMenu" (click)="toggleMenu($event)"><i [className]="'fa fa-bars'"></i></a> -->
+  <!-- <div class="header">Thor</div> -->
+  <router-outlet></router-outlet>
+</div>
+</div>
+<!-- <ul>
+  <li><a routerLink="/components-info">components-info</a></li>
+</!-->
+<!-- <app-components-info></app-components-info> -->

@@ -1,0 +1,34 @@
+<body>
+  <header class="title"><marquee hspace="30%" scrollamount="10%" behavior="alternate" direction="right"><h1 class="moving-title">Draggable Notes</h1></marquee></header>
+  <main>
+    <div>
+      <span>Choose the option to drag the notes!</span><br><br>
+      <div class="options">
+        <label for="Re-arrange"><input id="Re-arrange" name="drag-and-drop" type="radio" value="Re-arrange" (click)="chooseOption($event)" />Re-arrange</label>
+        <label for="Re-order/Shift"><input id="Re-order/Shift" name="drag-and-drop" type="radio" value="Re-order/Shift" (click)="chooseOption($event)" />Re-order/Shift</label>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="optionChoosen">
+      <div class="selection">Enter the notes and {{optionChoosen}}!</div>
+      <!-- <label class="input-label">Scribble to remember!</label><br> -->
+      <input type="text" (keyup.enter)="addNote($event)" placeholder="Scribble to remember!" class="input-container" />
+      <div class="input-placeholder">Press enter to add...</div><br>
+      <!-- Notes display -->
+      <!-- Using library -->
+      <div cdkDropList *ngIf="notesList.length !== 0 && optionChoosen === 'Re-arrange'" class="notes-container" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let note of notesList" class="note" cdkDrag>{{note}}</div>
+      </div>
+      <!-- Using pure JS -->
+      <div *ngIf="notesList.length !== 0 && optionChoosen === 'Re-order/Shift'" class="notes-container">
+          <div draggable="true" *ngFor="let note of notesList" class="note"
+          (dragstart)="handleDragStart($event)"
+          (dragend)="handleDragEnd($event)"
+          (dragenter)="handleDragEnter($event)"
+          (dragleave)="handleDragLeave($event)"
+          (dragover)="handleDragOver($event)"
+          (drop)="handleDrop($event)">{{note}}</div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>

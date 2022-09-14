@@ -1,0 +1,10 @@
+// .sub-title {
+//     border: 2px black solid;
+// }
+.directive-title {
+    border: 2px black solid;
+    background-color: white;
+}
+.directive-title.active {
+    background-color: lightgray;
+}
